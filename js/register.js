@@ -1,32 +1,30 @@
-
 const form = document.getElementById("studentForm");
 
-form.addEventListener('submit',(e)=>{
-    // prevents form resetting
-    e.preventDefault();
-    // get data from register.html
-    const studentName = document.getElementById("name").value.trim();
-const studentId = document.getElementById("studentId").value.trim();
-const email = document.getElementById("email").value.trim();
-const contact = document.getElementById("contact").value.trim();
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-// validates input fields are correct
+    const name = document.getElementById("name").value.trim();
+    const studentId = parseInt(document.getElementById("studentId").value.trim(), 10);
+    const email = document.getElementById("email").value.trim();
+    const contact = document.getElementById("contact").value.trim();
 
-    if(!studentName||!studentId||!email||!contact){
-        if(studentId>0){
-        alert("Please Fill all fields correctly!")
+    // Simple validation
+    if (!name || !email || !contact || isNaN(studentId) || studentId < 0) {
+        alert("Please enter valid data!");
         return;
     }
-    }
-    const studentData = {
-        name:studentName,
-        id:studentId,
-        email:email,
-        contact:contact
-    };
-    // Save data to local storage
-    localStorage.setItem("studentData",JSON.stringify(studentData));
-    alert("Student Data Added!");
-    window.location.href='results.html';
 
-})
+    // Retrieve existing students or initialize empty array
+    const students = JSON.parse(localStorage.getItem("students")) || [];
+
+    // Add new student
+    students.push({ name, studentId, email, contact });
+
+    // Save back to localStorage
+    localStorage.setItem("students", JSON.stringify(students));
+
+    alert("Student added successfully!");
+
+    // Redirect to results page
+    window.location.href = "results.html";
+});

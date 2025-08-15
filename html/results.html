@@ -22,8 +22,8 @@
     </p>
 
     <!-- Table Section -->
-    <div id="result" class="overflow-x-auto mt-6 w-full max-w-5xl">
-        <table class="min-w-full bg-gray-800 border border-gray-700 rounded-lg">
+    <div id="tableDiv" class="overflow-x-auto mt-6 w-full max-w-5xl">
+        <table class="min-w-full w-full bg-gray-800 border border-gray-700 rounded-lg">
             <thead>
                 <tr class="bg-gray-700 text-white">
                     <th class="py-3 px-4 text-left">Student ID</th>
@@ -33,29 +33,12 @@
                     <th class="py-3 px-4 text-center">Actions</th>
                 </tr>
             </thead>
-            <tbody id="recordsTableBody">
-               
-                 <tr>
-                    <td class="py-2 px-4 border-b text-gray-300 border-gray-700">101</td>
-                    <td class="py-2 px-4 border-b text-gray-300 border-gray-700">John Doe</td>
-                    <td class="py-2 px-4 border-b text-gray-300 border-gray-700">john@example.com</td>
-                    <td class="py-2 px-4 border-b text-gray-300 border-gray-700">9876543210</td>
-                    <td class="py-2 px-4 border-b  border-gray-700 text-center">
-                        <!-- Edit Icon -->
-                        <a href="edit.html" class="text-blue-400 hover:text-blue-600" title="Edit">
-                                <i class="fas fa-edit" title="Edit"></i>
-                        </a>
-                        <!-- Delete Icon -->
-                        <button class="text-red-400 hover:text-red-600 ml-3" title="Delete">
-                           <i class="fas fa-trash-alt" title="Delete"></i>
-                        </button>
-                    </td>
-                </tr>
+            <tbody id="tableBody">
             </tbody>
         </table>
     </div>
 
-    <!-- Empty State -->
+    <!--If no students registered  -->
     <p id="noRecordsMsg" class="text-gray-400 text-center mt-6 hidden">
         No student records found. Please register a new student.
     </p>
