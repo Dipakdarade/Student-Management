@@ -12,6 +12,7 @@ if(students.length>0){
 
     students.forEach((student,index) => {
         const tr = document.createElement('tr');
+        tr.classList='text-xl';
         tr.innerHTML = `
        <td class="py-2 px-4 border-b text-gray-300 border-gray-700 break-words">${student.studentId}</td>
        <td class="py-2 px-4 border-b text-gray-300 border-gray-700 break-words">${student.name}</td>
@@ -28,7 +29,6 @@ if(students.length>0){
             tableBody.appendChild(tr);
     });
 }else{
-    // noRecordMsg.classList.remove = 'hidden';
       // Hide table and show empty message
     tableDiv.style.display = "none";
     noRecordsMsg.style.display = "block";
@@ -41,4 +41,5 @@ function deleteStudent(index) {
         location.reload(); // Reload page to update table
     }
 }
+
 

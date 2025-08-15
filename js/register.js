@@ -8,7 +8,7 @@ form.addEventListener("submit", function(event) {
     const email = document.getElementById("email").value.trim();
     const contact = document.getElementById("contact").value.trim();
 
-    // Simple validation
+    // validation
     if (!name || !email || !contact || isNaN(studentId) || studentId < 0) {
         alert("Please enter valid data!");
         return;
@@ -20,11 +20,32 @@ form.addEventListener("submit", function(event) {
     // Add new student
     students.push({ name, studentId, email, contact });
 
-    // Save back to localStorage
+    // Save to localStorage
     localStorage.setItem("students", JSON.stringify(students));
 
-    alert("Student added successfully!");
+  function showAutoCloseAlert(message, redirectUrl) {
+    // Create custom alert box
+    const alertBox = document.createElement("div");
+    alertBox.textContent = message;
+    alertBox.style.position = "fixed";
+    alertBox.style.top = "20px";
+    alertBox.style.left = "50%";
+    alertBox.style.transform = "translateX(-50%)";
+    alertBox.style.background = "#4CAF50";
+    alertBox.style.color = "white";
+    alertBox.style.padding = "10px 20px";
+    alertBox.style.borderRadius = "5px";
+    alertBox.style.fontSize = "16px";
+    alertBox.style.zIndex = "1000";
+    document.body.appendChild(alertBox);
 
-    // Redirect to results page
-    window.location.href = "results.html";
+    // Remove after 900 miliseconds and redirect
+    setTimeout(() => {
+        alertBox.remove();
+        window.location.href = redirectUrl;
+    }, 900);
+}
+
+showAutoCloseAlert("Student added successfully!", "results.html");
+
 });
